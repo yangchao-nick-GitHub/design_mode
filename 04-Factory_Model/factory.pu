@@ -1,0 +1,33 @@
+@startuml
+
+abstract class Shoes {
+    + void show()
+}
+
+abstract class Clothe {
+    + void show()
+}
+
+
+abstract class AbstractFactory {
+    + void show()
+}
+
+class NikeShoes {
+    + void show()
+}
+
+class UniqloClothe {
+    + void show()
+}
+
+class ConcreteFactory {
+    + void show()
+}
+
+Shoes <|-- NikeShoes
+Clothe <|-- UniqloClothe
+AbstractFactory <|-- ConcreteFactory
+
+
+@enduml

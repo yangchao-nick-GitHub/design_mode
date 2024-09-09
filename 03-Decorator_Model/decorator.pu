@@ -1,0 +1,35 @@
+@startuml
+
+abstract class  Component {
+    + void takeClother()
+}
+
+class ConcreteComponent {
+    + void takeClother()
+}
+
+class Decorator {
+    - shared_ptr<Component> component_;
+    + + void takeClother() { component_->takeClother() }
+}
+
+class UnderwearDecorator {
+    + void takeClother()
+}
+
+class SweaterDecorator {
+    + void takeClother()
+}
+
+class CoatDeecorator {
+    + void takeClother()
+}
+
+Component <|-- ConcreteComponent
+Component <|-- Decorator
+Decorator <|-- UnderwearDecorator
+Decorator <|-- SweaterDecorator
+Decorator <|-- CoatDeecorator
+
+
+@enduml

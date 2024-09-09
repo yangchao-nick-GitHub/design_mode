@@ -1,0 +1,36 @@
+@startuml
+
+abstract class  IObserver {
+    + void attach()
+    + void detach()
+    + void update()
+}
+
+abstract class NewspaperSubject {
+    + void attach()
+    + void detach()
+    + void notify()
+    
+}
+
+class BaseSubject {
+    - list<IObserver *> observers_
+    - string message_info_
+    + void attach()
+    + void detach()
+    + void notify()
+    + void createMessage()
+}
+
+class StudentObserver {
+    - string message_from_subject_
+    + void attach()
+    + void detach()
+    + void update()
+}
+
+IObserver <|-- StudentObserver
+NewspaperSubject <|-- BaseSubject
+
+
+@enduml

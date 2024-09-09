@@ -1,0 +1,60 @@
+@startuml
+
+abstract class  FlyBahavior {
+    + void fly()
+}
+
+abstract class  QuackBehavior {
+    + void quack()
+}
+
+class FlyWithWings {
+    + void fly() override
+}
+
+class FlyNoWay {
+    + void fly() override
+
+}
+
+class Quack {
+    + void quack() override
+}
+
+class MuteQuack {
+    + void quack() override
+}
+
+abstract class Duck {
+    - flyBehavior_: shared_ptr
+    - quackBehavior_: shared_ptr
+    + setFlyBehavior()
+    + setQuackBehavior()
+    + void display()
+    + void performFly()
+    + void performQuack()
+}
+
+class MallardDuck {
+    + void display() override
+    + void performFly() override
+    + void performQuack() override
+}
+
+class RedheadDuck {
+    + void display() override
+    + void performFly() override
+    + void performQuack() override
+}
+
+FlyBahavior <|-- FlyWithWings
+FlyBahavior <|-- FlyNoWay
+QuackBehavior <|-- Quack
+QuackBehavior <|-- MuteQuack
+
+Duck <|-- MallardDuck
+Duck <|-- RedheadDuck
+
+
+
+@enduml
