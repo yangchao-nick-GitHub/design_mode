@@ -45,7 +45,10 @@ void BaseSubject::attach(IObserver *observer)
 
 void BaseSubject::detach(IObserver *observer)
 {
-    observers_.remove(observer);
+    auto it = find(observers_.begin(), observers_.end(), observer);
+    if (it != observers_.end()) {
+        observers_.erase(it);
+    }
 }
 
 void BaseSubject::createMessage(const string& msg)
@@ -92,12 +95,16 @@ StudentObserver::StudentObserver(string observer_name)
 
 void StudentObserver::attach(NewspaperSubject* subject)
 {
-    subject->attach(this);
+    if (subject) {
+        subject->attach(this);
+    }
 }
 
 void StudentObserver::detach(NewspaperSubject* subject)
 {
-    subject->detach(this);
+    if (subject) {
+        subject->detach(this);
+    }
 }
 
 void StudentObserver::update(const string& notify_msg)
@@ -128,6 +135,12 @@ int main()
     subject_a->createMessage("2014-09-07 每日新闻");
     subject_b->createMessage("2014-09-07 腾讯游戏日报");
     subject_c->createMessage("2014-09-07 军事简报");
+
+    delete subject_a;
+    delete subject_b;
+    delete subject_c;
+    delete observer_a;
+    delete observer_b;
 
     return 0;
 }
