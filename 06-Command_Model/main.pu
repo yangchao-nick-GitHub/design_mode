@@ -1,0 +1,27 @@
+@startuml
+
+abstract class AudioCommand {
+    + void execute()
+}
+
+class PlayCommand {
+    + void execute()
+}
+
+class StopCommand {
+    + void execute()
+}
+
+class Invoker {
+    - AudioCommand command_list
+    + void executeCommand()
+    + void addCommand()
+    + void clearCommand()
+}
+
+AudioCommand <|-- PlayCommand
+AudioCommand <|-- StopCommand
+
+
+
+@enduml
